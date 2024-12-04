@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "start:dev": "nodemon src/app.js",
     "lint": "npx eslint **/*.js --fix",
     "prettier": "prettier **/*.js --write",
     "prepare": "husky"
