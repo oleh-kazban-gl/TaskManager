@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint **/*.js --fix",
+    "prettier": "prettier **/*.js --write",
     "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^6.11.0"
+    "mongodb": "^6.11.0",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

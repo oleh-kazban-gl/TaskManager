@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { User } = require('./models/user');
+const { Task } = require('./models/task');
 
 const uri = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-manager-api';
@@ -27,8 +28,9 @@ mongoose
 // });
 
 const user = new User({
-    name: 'Andrew',
-    age: 40,
+    name: 'Mykola',
+    email: 'email@com.net',
+    password: '1234567',
 });
 user.save()
     .then((response) => {
@@ -40,3 +42,28 @@ user.save()
     .finally(() => {
         mongoose.disconnect();
     });
+
+// const task1 = new Task({
+//     description: 'Learn something new',
+//     completed: false,
+// });
+// const task2 = new Task({
+//     description: 'Buy some grosseries',
+//     completed: true,
+// });
+// const task3 = new Task({
+//     description: 'Watch movies',
+//     completed: false,
+// });
+
+// task3
+//     .save()
+//     .then((task) => {
+//         console.log('Task: ', task);
+//     })
+//     .catch((error) => {
+//         console.log('Error: ', error);
+//     })
+//     .finally(() => {
+//         mongoose.disconnect();
+//     });
