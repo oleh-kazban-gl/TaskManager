@@ -101,12 +101,13 @@ app.delete('/users/:id', async (request, response) => {
 
   try {
     const result = await User.findByIdAndDelete(id);
+    const users = await User.find({});
 
     if (!result) {
       return response.status(404).send();
     }
 
-    response.status(200).send(result);
+    response.status(200).send(users);
   } catch (error) {
     response.status(400).send(error);
   }
@@ -176,12 +177,13 @@ app.delete('/tasks/:id', async (request, response) => {
 
   try {
     const result = await Task.findByIdAndDelete(id);
+    const tasks = await Task.find({});
 
     if (!result) {
       return response.status(404).send();
     }
 
-    response.status(200).send(result);
+    response.status(200).send(tasks);
   } catch (error) {
     response.status(400).send(error);
   }
