@@ -4,6 +4,7 @@ require('./db/mongoose');
 
 const User = require('./models/user');
 const Task = require('./models/task');
+const isUpdateValid = require('./utils/update.validator');
 
 /*
 Tasks:
@@ -72,6 +73,12 @@ app.get('/users/:id', async (request, response) => {
 app.patch('/users/:id', async (request, response) => {
   const id = request.params.id;
   const update = request.body;
+  const allowedUpdates = ['firstName', 'lastName', 'email', 'password'];
+  const updates = Object.keys(update);
+
+  if (!isUpdateValid(updates, allowedUpdates)) {
+    return response.status(400).send({ error: 'Invalid update options!' });
+  }
 
   try {
     const result = await User.findByIdAndUpdate(id, update, {
@@ -141,6 +148,12 @@ app.get('/tasks/:id', async (request, response) => {
 app.patch('/tasks/:id', async (request, response) => {
   const id = request.params.id;
   const update = request.body;
+  const allowedUpdates = ['description', 'completed'];
+  const updates = Object.keys(update);
+
+  if (!isUpdateValid(updates, allowedUpdates)) {
+    return response.status(400).send({ error: 'Invalid update options!' });
+  }
 
   try {
     const result = await Task.findByIdAndUpdate(id, update, {
